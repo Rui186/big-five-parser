@@ -1,0 +1,33 @@
+%br
+%h4 Big 5 Test Result:
+%div
+  {
+  - @result.each_with_index do |item, index|
+    - result_index = index + 1
+    %div
+      - if item.last.is_a?(String)
+        &nbsp&nbsp "#{item.first}": "#{item.last}",
+      - else
+        &nbsp&nbsp "#{item.first}": {
+        - item.last.each do |domain|
+          - item_index = index + 1
+          %div
+            - if domain.last.is_a?(String)
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "#{domain.first}": #{domain.last},
+            - else
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "#{domain.first}": {
+              - domain.last.each_with_index do |fact, index|
+                %div
+                  - if (index + 1) == domain.last.size
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "#{fact.first}": #{fact.last}
+                    %div
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp }
+                    %div
+                      - if result_index == @result.size
+                        &nbsp&nbsp&nbsp }
+                      - else
+                        &nbsp&nbsp&nbsp },
+                  - else
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "#{fact.first}": #{fact.last},
+
+  }
