@@ -1,12 +1,13 @@
-.row
-  = simple_form_for @big_file_result, url: big_five_parser_parse_path, remote: true do |f|
-    = f.input :name
-    = f.input :email
-    = f.input :file, as: :file
-    = f.button :submit, 'Parse', class: 'button'
-  %button= link_to 'Reset', root_path
-  %div(data-js-submit-button)
-  
-.row
-  %div(data-js-api-response)
-  %div(data-js-result-display)
+%section
+  .row
+    = simple_form_for @big_file_result, url: big_five_parser_parse_path, remote: true do |f|
+      = f.input :name
+      = f.input :email
+      = f.input :file, as: :file
+      = f.button :submit, 'Parse', class: 'button'
+    %button= link_to 'Reset', root_path
+    %div(data-js-submit-button)
+
+  .row
+    %div(data-js-api-response)
+    %div(data-js-result-display)
